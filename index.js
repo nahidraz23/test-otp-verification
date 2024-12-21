@@ -9,7 +9,7 @@ const port = process.env.PORT || 5300
 // Middleware to enable CORS
 app.use(cors({
     origin: ['https://giveaway-1-dd908a.webflow.io','https://test-otp-verification.vercel.app/'], // Allow your domain
-    methods: ['GET', 'POST'], // Allow specific HTTP methods
+    methods: ['GET', 'POST', 'OPTIONS'], // Allow specific HTTP methods
     credentials: true // Allow cookies if needed
 }));
 
