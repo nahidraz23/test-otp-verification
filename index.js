@@ -12,6 +12,13 @@ app.use(cors({
     methods: ['GET', 'POST'], // Allow specific HTTP methods
     credentials: true // Allow cookies if needed
 }));
+
+// Preflight request handling for specific endpoint
+app.options('/send-otp', cors({
+    origin: 'https://giveaway-1-dd908a.webflow.io',
+    methods: ['POST']
+}));
+
 app.use(express.json())
 app.use(bodyParser.json())
 
