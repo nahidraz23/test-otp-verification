@@ -6,15 +6,12 @@ require('dotenv').config()
 const port = process.env.PORT || 5300
 const app = express()
 
-// middlewares
-app.use(
-  cors({
-    origin: [
-      'https://test-otp-verification.vercel.app/',
-      'https://giveaway-1-dd908a.webflow.io/'
-    ]
-  })
-)
+// Middleware to enable CORS
+app.use(cors({
+    origin: 'https://giveaway-1-dd908a.webflow.io', // Allow your Webflow domain
+    methods: ['GET', 'POST'], // Allow specific HTTP methods
+    credentials: true // Allow cookies if needed
+}));
 app.use(express.json())
 app.use(bodyParser.json())
 
