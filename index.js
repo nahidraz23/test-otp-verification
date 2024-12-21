@@ -2,6 +2,7 @@ const express = require('express');
 const twilio = require('twilio');
 const bodyParser = require('body-parser');
 require('dotenv').config()
+const port = process.env.PORT || 5300
 
 const app = express();
 app.use(bodyParser.json());
@@ -36,4 +37,10 @@ app.post('/verify-otp', async (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.get('/', (req, res) => {
+    res.send('Test OTP server is running')
+  })
+  
+  app.listen(port, () => {
+    console.log(`Test OTP server is running ${port}`)
+  })
