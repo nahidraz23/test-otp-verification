@@ -8,7 +8,8 @@ const app = express();
 // middlewares
 app.use(cors(({
     origin: [
-      "https://test-otp-verification.vercel.app/"
+      "https://test-otp-verification.vercel.app/",
+      "https://giveaway-1-dd908a.webflow.io/"
     ]
   })))
   app.use(express.json())
