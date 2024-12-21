@@ -3,8 +3,15 @@ const twilio = require('twilio');
 const bodyParser = require('body-parser');
 require('dotenv').config()
 const port = process.env.PORT || 5300
-
 const app = express();
+
+// middlewares
+app.use(cors(({
+    origin: [
+      "https://test-otp-verification.vercel.app/"
+    ]
+  })))
+  app.use(express.json())
 app.use(bodyParser.json());
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
