@@ -1,14 +1,14 @@
 const express = require('express')
+const app = express()
 const twilio = require('twilio')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 const port = process.env.PORT || 5300
-const app = express()
 
 // Middleware to enable CORS
 app.use(cors({
-    origin: 'https://giveaway-1-dd908a.webflow.io', // Allow your Webflow domain
+    origin: ['https://giveaway-1-dd908a.webflow.io','https://test-otp-verification.vercel.app/'], // Allow your domain
     methods: ['GET', 'POST'], // Allow specific HTTP methods
     credentials: true // Allow cookies if needed
 }));
