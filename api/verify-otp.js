@@ -4,6 +4,17 @@ require('dotenv').config();
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 export default async (req, res) => {
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', 'https://giveaway-1-dd908a.webflow.io');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        // Handle preflight request
+        res.status(204).end();
+        return;
+    }
+
     if (req.method === 'POST') {
         const { phoneNumber, code } = req.body;
 
