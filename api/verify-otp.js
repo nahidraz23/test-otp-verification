@@ -5,7 +5,7 @@ const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TO
 
 export default async (req, res) => {
     // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', 'https://giveaway-1-dd908a.webflow.io');
+    res.setHeader('Access-Control-Allow-Origin', 'https://giveaway-1-dd908a.webflow.io', 'https://www.goat-giveaways.com/');
     res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
