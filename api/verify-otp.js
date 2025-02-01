@@ -4,8 +4,18 @@ require('dotenv').config();
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 export default async (req, res) => {
-    // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', 'https://giveaway-1-dd908a.webflow.io', 'https://www.goat-giveaways.com');
+    // Allowed origins
+    const allowedOrigins = [
+        'https://giveaway-1-dd908a.webflow.io',
+        'https://www.goat-giveaways.com'
+    ];
+
+    const origin = req.headers.origin;
+
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+
     res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -22,6 +32,7 @@ export default async (req, res) => {
             const verificationCheck = await client.verify
                 .services(process.env.SERVICE_SID)
                 .verificationChecks.create({ to: phoneNumber, code });
+
             res.status(200).json({ message: 'OTP verified', status: verificationCheck.status });
         } catch (error) {
             res.status(500).json({ error: 'Failed to verify OTP', details: error.message });
