@@ -24,7 +24,7 @@ export default async (req, res) => {
     }
 
     if (req.method === 'POST') {
-        const { phoneNumber } = req.body;
+        // const { phoneNumber } = req.body;
 
         try {
             const verification = await client.verify
